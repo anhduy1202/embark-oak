@@ -7,7 +7,7 @@ const Hero = () => {
     return (
         <div className="font-DMSans relative items-center flex flex-col mt-12">
             {/* this should fetch from CMS */}
-            <img className='md:w-full' src="/banner.svg" alt="Hero banner" />
+            <img className='w-full' src="/banner.svg" alt="Hero banner" />
             <div className="absolute top-[40%] text-white flex flex-col items-center">
                 <p className='md:text-[6rem] text-[1.75rem] font-light'>SP24 COLLECTION</p>
                 <Link href={"/mens-clothing"}>

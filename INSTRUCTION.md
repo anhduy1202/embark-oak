@@ -14,4 +14,4 @@
 5. Landing Page
 6. Shopping Cart component
 7. Hero Component, add button (npx shadcn-ui@latest add button)
-8. Featured Component, carousel for mobile responsive (.product-carousel in global.css)
+10. Featured Component, AddToCartBtn, carousel for mobile responsive (.product-carousel in global.css, npx shadcn-ui@latest add carousel card)
