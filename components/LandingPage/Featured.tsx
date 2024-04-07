@@ -84,9 +84,8 @@ const FeaturedList: React.FC<FeaturedListProps> = ({ featList }) => {
                         </div>
                     )
                 })}
-
             </div>
-            <Carousel className="md:hidden mt-12 max-w-xs">
+            <Carousel className="md:hidden mt-6 max-w-[16rem]">
                 <CarouselContent>
                     {Array.from(featList).map((product: productType, index) => (
                         <CarouselItem key={index}>
