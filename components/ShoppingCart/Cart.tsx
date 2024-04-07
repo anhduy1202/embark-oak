@@ -1,9 +1,13 @@
 import React from 'react'
 import { BsHandbag } from "react-icons/bs";
 
-const Cart = () => {
+interface CartProps {
+    size?: number
+}
+
+const Cart: React.FC<CartProps> = ({size = 36}) => {
     return (
-        <BsHandbag size={36} className='col-start-3 justify-self-end' />
+        <BsHandbag size={size} className='col-start-3 justify-self-end' />
     )
 }
 

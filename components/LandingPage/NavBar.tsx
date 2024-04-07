@@ -1,9 +1,9 @@
-import Link from 'next/link'
 import React from 'react'
-import Cart from '../ShoppingCart/Cart'
+import { MenuItemType } from '@/lib/interface'
+import { DesktopMenu, MobileMenu } from '../Menu/Menu'
 
 const NavBar = () => {
-    const navLinks = [
+    const navLinks: MenuItemType[] = [
         {
             id: 'link1',
             title: 'Man',
@@ -26,19 +26,14 @@ const NavBar = () => {
         }
     ]
     return (
-        <nav className='grid grid-cols-3 gap-4 items-center'>
-            <ul className='col-start-1 flex items-center gap-6 md:text-[1.25rem]'>
-                {navLinks.map((link => {
-                    return (
-                        <Link key={link.id} href={link.url} className=''>
-                            {link.title}
-                        </Link>
-                    )
-                }))}
-            </ul>
-            <img src='/eao_logo.svg' alt='Logo' className='justify-self-center col-start-2 md:w-36i' />
-            <Cart />
-        </nav>
+        <>
+            <nav className='hidden md:grid grid-cols-3 gap-4 items-center'>
+                <DesktopMenu links={navLinks} />
+            </nav>
+            <nav className='md:hidden flex justify-between items-center'>
+                <MobileMenu links={navLinks} />
+            </nav>
+        </>
     )
 }
 
