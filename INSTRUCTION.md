@@ -19,3 +19,5 @@ I. Landing Page:
     10. Featured Component, AddToCartBtn, carousel for mobile responsive (.product-carousel in global.css, npx shadcn-ui@latest add carousel card)
     11. Modify carousel.tsx to reduce previous, CarouselNext, Prev left/right
     12. Categories.tsx
+    13. Refactor to CustomCard
+    14. Blogs.tsx, add custom to LabelCard like customImage, customText,...

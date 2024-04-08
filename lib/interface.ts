@@ -10,3 +10,10 @@ export interface productType {
     title: string,
     price: string
 }
+
+export interface LabelCardType {
+    id: string,
+    title: string,
+    imgSrc: string,
+    url: string
+}

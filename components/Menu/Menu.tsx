@@ -23,7 +23,7 @@ export const DesktopMenu: React.FC<MenuProps> = ({ links }) => {
                     )
                 }))}
             </ul>
-            <img src='/eao_logo.svg' alt='Logo' className='justify-self-center col-start-2 md:w-36i' />
+            <img src='/eao_logo.svg' alt='Logo' className='object-fit justify-self-center col-start-2 md:w-36i' />
             <Cart />
         </>
     )
@@ -57,7 +57,7 @@ export const MobileMenu: React.FC<MenuProps> = ({ links }) => {
                     <AiOutlineMenu onClick={() => setOpen(true)} className='cursor-pointer' size={24} />
                 )}
             </ul>
-            <img src='/eao_logo.svg' alt='Logo' className='justify-self-center col-start-2 w-24 md:w-36' />
+            <img src='/eao_logo.svg' alt='Logo' className='object-fit justify-self-center col-start-2 w-24 md:w-36' />
             <Cart size={24} />
         </>
     )

@@ -10,6 +10,7 @@ import {
 import Link from 'next/link'
 import AddToCartBtn from '../Button/AddToCartBtn'
 import { Card, CardContent } from '../ui/card'
+import { ProductCard } from '../CustomCard/CustomCard'
 
 const Featured = () => {
     const featuredList: productType[] = [
@@ -76,12 +77,7 @@ const FeaturedList: React.FC<FeaturedListProps> = ({ featList }) => {
             <div className="product-carousel">
                 {featList.map((product: productType) => {
                     return (
-                        <div key={product.id} className="flex flex-col cursor-pointer items-center">
-                            <img src={product.src} alt={product.title} className='w-48 md:w-full relative rounded-xl' />
-                            <p className='mt-6 font-medium text-[1.25rem] md:text-[1.75rem]'>{product.title}</p>
-                            <p className='text-[1.25rem]'>${product.price}</p>
-                            <AddToCartBtn />
-                        </div>
+                        <ProductCard product={product}/>
                     )
                 })}
             </div>
@@ -103,7 +99,7 @@ const FeaturedList: React.FC<FeaturedListProps> = ({ featList }) => {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious/>
+                <CarouselPrevious />
                 <CarouselNext />
             </Carousel>
         </>
