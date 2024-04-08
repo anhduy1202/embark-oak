@@ -2,7 +2,6 @@ import { LabelCardType, productType } from '@/lib/interface'
 import React from 'react'
 import AddToCartBtn from '../Button/AddToCartBtn'
 import Link from 'next/link'
-import Image from 'next/image'
 import { Button } from '../ui/button'
 
 interface ProductProps {
@@ -34,9 +33,9 @@ export const LabelCard: React.FC<LabelCardProps> = ({ category, customImage, cus
     return (
         <div key={category.id} className="relative">
             <Link href={category.url} target='_blank'>
-                <Image src={category.imgSrc} width={200} height={240} alt="Category item" className={`rounded-xl md:w-full object-fit ${customImage}`} />
+                <img src={category.imgSrc} alt="Category item" className={`rounded-xl md:w-full object-fit ${customImage}`} />
                 <div className={`font-DMSans flex flex-col md:items-start items-center absolute bottom-12 left-[50%] md:left-12 md:translate-x-0 translate-x-[-50%] text-white ${custom}`}>
-                    <p className={`text-[2rem] md:text-[3rem] font-semibold ${customText}`}>{category.title}</p>
+                    <p className={`md:text-[3rem] font-semibold ${customText}`}>{category.title}</p>
                     <Button variant={'secondary'} className={`w-24 md:w-36 ${customBtn}`}>{btnLabel} </Button>
                 </div>
             </Link>

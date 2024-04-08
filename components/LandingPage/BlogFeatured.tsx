@@ -8,13 +8,13 @@ const BlogFeatured = () => {
             id: 'blog1',
             title: 'Latest fashion trend in 2024',
             url: '/blog1',
-            imgSrc: '/blog1.svg'
+            imgSrc: '/blog1.png'
         },
         {
             id: 'blog2',
             title: '2023 Archived Collection',
             url: '/blog2',
-            imgSrc: '/blog2.svg'
+            imgSrc: '/blog2.png'
         },
     ]
     return (
@@ -24,7 +24,7 @@ const BlogFeatured = () => {
             <div className="mt-12 flex flex-col md:flex-row gap-12 justify-center">
                 {blogs.map((blog: LabelCardType) => {
                     return (
-                        <LabelCard custom='w-full bottom-8' category={blog} customImage='md:w-[480px]' customText="text-center text-[1rem] p-1 md:text-[2rem] mb-4" customBtn='w-16' btnLabel='Read it' />
+                        <LabelCard custom='bottom-8' category={blog} customImage='md:w-[420px]' customText="text-center md:text-start text-[1.25rem] md:text-[1.5rem] mb-4" customBtn='w-16' btnLabel='Read it' />
                     )
                 })}
             </div>
