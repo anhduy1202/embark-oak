@@ -24,7 +24,7 @@ const BlogFeatured = () => {
             <div className="mt-12 flex flex-col md:flex-row gap-12 justify-center">
                 {blogs.map((blog: LabelCardType) => {
                     return (
-                        <LabelCard custom='w-full bottom-8' category={blog} customImage='md:w-[480px]' customText="text-center text-[1.15rem] p-1 md:text-[2rem] mb-4" customBtn='w-16' btnLabel='Read it' />
+                        <LabelCard custom='w-full bottom-8' category={blog} customImage='md:w-[480px]' customText="text-center text-[1rem] p-1 md:text-[2rem] mb-4" customBtn='w-16' btnLabel='Read it' />
                     )
                 })}
             </div>
