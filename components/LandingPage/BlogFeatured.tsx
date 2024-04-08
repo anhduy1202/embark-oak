@@ -21,10 +21,10 @@ const BlogFeatured = () => {
         <section className='flex flex-col justify-center items-center mt-12 font-Outfit'>
             <p className='text-[1.5rem] md:text-[3rem] font-normal'>Blogs</p>
             <p className='text-[0.75rem] md:text-[1.5rem] font-extralight'>Check out latest fashion blogs from us</p>
-            <div className="mt-12 flex gap-12 justify-center">
+            <div className="mt-12 flex flex-col md:flex-row gap-12 justify-center">
                 {blogs.map((blog: LabelCardType) => {
                     return (
-                        <LabelCard category={blog} customImage='md:w-[480px]'  customText="md:text-[2rem] mb-4" btnLabel='Read it' />
+                        <LabelCard custom='w-full bottom-8' category={blog} customImage='md:w-[480px]' customText="text-center text-[1.15rem] p-1 md:text-[2rem] mb-4" customBtn='w-16' btnLabel='Read it' />
                     )
                 })}
             </div>
