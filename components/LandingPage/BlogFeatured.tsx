@@ -1,6 +1,7 @@
 import { LabelCardType } from '@/lib/interface'
 import React from 'react'
 import { LabelCard } from '../CustomCard/CustomCard'
+import Link from 'next/link'
 
 const BlogFeatured = () => {
     const blogs: LabelCardType[] = [
@@ -28,6 +29,9 @@ const BlogFeatured = () => {
                     )
                 })}
             </div>
+            <Link href={"/blogs"} className='mt-12 font-light text-[1.5rem]'>
+                View all
+            </Link>
         </section>
 
     )

@@ -12,6 +12,7 @@ interface MenuProps {
 }
 
 export const DesktopMenu: React.FC<MenuProps> = ({ links }) => {
+
     return (
         <>
             <ul className='col-start-1 flex items-center gap-6 md:text-[1.25rem]'>
@@ -23,7 +24,7 @@ export const DesktopMenu: React.FC<MenuProps> = ({ links }) => {
                     )
                 }))}
             </ul>
-            <img src='/eao_logo.svg' alt='Logo' className='object-fit justify-self-center col-start-2 md:w-36i' />
+            <img src='/eao_logo.svg' alt='Logo' className='object-fit justify-self-center col-start-2 md:w-36' />
             <Cart />
         </>
     )
