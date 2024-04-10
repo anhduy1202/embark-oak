@@ -12,10 +12,12 @@ interface ProductProps {
 export const ProductCard: React.FC<ProductProps> = ({ product, custom }) => {
     return (
         <div key={product.id} className="flex flex-col cursor-pointer items-center">
-            <img src={product.src} alt={product.title} className='w-48 md:w-full relative rounded-xl' />
-            <p className='mt-6 font-medium text-[1.25rem] md:text-[1.75rem]'>{product.title}</p>
-            <p className='text-[1.25rem]'>${product.price}</p>
-            <AddToCartBtn />
+            <Link target="_blank" href={`/product/${product.id}`}>
+                <img src={product.src} alt={product.title} className='w-48 md:w-full relative rounded-xl' />
+                <p className='mt-6 font-medium text-[1.25rem] md:text-[1.75rem]'>{product.title}</p>
+                <p className='text-[1.25rem]'>${product.price}</p>
+                <AddToCartBtn />
+            </Link>
         </div>
     )
 }

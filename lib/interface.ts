@@ -8,7 +8,10 @@ export interface productType {
     id: string,
     src: string,
     title: string,
-    price: string
+    price: string,
+    quantity: number,
+    images?: string[] | any, 
+    categories: string[]
 }
 
 export interface LabelCardType {

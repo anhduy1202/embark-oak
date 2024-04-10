@@ -1,0 +1,75 @@
+[
+    {
+        "id": "feat1",
+        "src": "product-1.png",
+        "title": "Black Blazer",
+        "price": "102.00",
+        "categories": [
+            "man",
+            "top",
+            "featured"
+        ],
+        "images": ["/product-1.png","/product-1a.jpg","/product-1b.jpg"],
+        "quantity": 10
+    },
+    {
+        "id": "feat2",
+        "src": "product-2.png",
+        "title": "Brown Jacket",
+        "price": "70.00",
+        "categories": [
+            "man",
+            "bottom",
+            "featured"
+        ],
+        "quantity": 30
+    },
+    {
+        "id": "feat3",
+        "src": "product-3.png",
+        "title": "White Pants",
+        "price": "45.00",
+        "categories": [
+            "woman",
+            "bottom",
+            "featured"
+        ],
+        "quantity": 60
+    },
+    {
+        "id": "feat4",
+        "src": "product-4.png",
+        "title": "Striped Shirt",
+        "price": "80.00",
+        "categories": [
+            "man",
+            "top",
+            "featured"
+        ],
+        "quantity": 4
+    },
+    {
+        "id": "feat5",
+        "src": "product-5.png",
+        "title": "Leather Shoes",
+        "price": "60.00",
+        "categories": [
+            "man",
+            "shoes",
+            "featured"
+        ],
+        "quantity": 30
+    },
+    {
+        "id": "feat6",
+        "src": "product-6.png",
+        "title": "Silk Shirt",
+        "price": "100.00",
+        "categories": [
+            "man",
+            "top",
+            "featured"
+        ],
+        "quantity": 100
+    }
+]

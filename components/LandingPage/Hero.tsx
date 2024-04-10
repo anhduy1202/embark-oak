@@ -10,7 +10,7 @@ const Hero = () => {
             {/* this should fetch from CMS */}
             <img width={920} height={920} src="/banner.png" alt="Hero banner" className='w-full rounded-xl' />
             <div className="absolute top-[40%] text-white flex flex-col items-center">
-                <p className='md:text-[6rem] text-[1.75rem] font-light'>SP24 COLLECTION</p>
+                <p className='md:text-[6rem] text-[1.75rem] font-light text-center'>SP24 COLLECTION</p>
                 <Link href={"/mens-clothing"}>
                     <Button variant={'secondary'} className='h-6 mt-2 md:h-10 md:text-[1.5rem] md:mt-4  md:p-4 font-light'>
                         Buy Now
