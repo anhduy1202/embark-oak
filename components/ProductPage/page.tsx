@@ -44,7 +44,7 @@ const ProductCarousel: React.FC<CarouselProps> = ({ product, setIndex, selectedI
         }
     }
     return (
-        <Carousel className="mt-6 w-[320px] md:w-[480px]">
+        <Carousel className="mt-6 w-[280px] md:w-[480px]">
             <CarouselContent>
                 {product.images.map((imgUrl: string) => (
                     <CarouselItem key={`product-${imgUrl}`}>
