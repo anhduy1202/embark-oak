@@ -23,4 +23,7 @@ I. Landing Page:
     13. Refactor to CustomCard
     14. Blogs.tsx, add custom to LabelCard like customImage, customText,...
 
-II. Proudct Page (/product/[id])
+II. Product Page (/product/[id])
+    1. ProductPage/pages
+    2. <ProductCarousel>
+    3. Work on <ProductPreview> using blur based on selectedIndex, need new <div onclick> to wrap the ui component

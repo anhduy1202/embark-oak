@@ -24,8 +24,8 @@ export const DesktopMenu: React.FC<MenuProps> = ({ links }) => {
                     )
                 }))}
             </ul>
-            <Link href="/">
-                <img src='/eao_logo.svg' alt='Logo' className='object-fit justify-self-center col-start-2 md:w-36' />
+            <Link href="/" className='object-fit justify-self-center col-start-2 md:w-36'>
+                <img src='/eao_logo.svg' alt='Logo' className=''/>
             </Link>
             <Cart />
         </>
