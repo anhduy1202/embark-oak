@@ -28,9 +28,6 @@ const Cart: React.FC<CartProps> = ({ size = 36 }) => {
 
 export const CartModal = () => {
     const { cartCount, shouldDisplayCart, cartDetails, handleCartClick, removeItem } = useShoppingCart();
-    useEffect(() => {
-        console.log(cartDetails)
-    }, [cartDetails])
     return (
         <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
             <SheetContent>

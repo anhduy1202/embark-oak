@@ -23,6 +23,7 @@
             "bottom",
             "featured"
         ],
+        "images": ["/product-1.png","/product-1a.jpg","/product-1b.jpg"],
         "quantity": 30
     },
     {
@@ -35,6 +36,7 @@
             "bottom",
             "featured"
         ],
+        "images": ["/product-1.png","/product-1a.jpg","/product-1b.jpg"],
         "quantity": 60
     },
     {
@@ -47,6 +49,7 @@
             "top",
             "featured"
         ],
+        "images": ["/product-1.png","/product-1a.jpg","/product-1b.jpg"],
         "quantity": 4
     },
     {
@@ -59,6 +62,7 @@
             "shoes",
             "featured"
         ],
+        "images": ["/product-1.png","/product-1a.jpg","/product-1b.jpg"],
         "quantity": 30
     },
     {
@@ -71,6 +75,7 @@
             "top",
             "featured"
         ],
+        "images": ["/product-1.png","/product-1a.jpg","/product-1b.jpg"],
         "quantity": 100
     }
 ]

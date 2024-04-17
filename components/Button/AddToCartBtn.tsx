@@ -8,14 +8,13 @@ interface CartProps {
 }
 const AddToCartBtn: React.FC<CartProps> = ({ product }) => {
     const { addItem, handleCartClick } = useShoppingCart();
-    console.log("Add ", product?.images[0])
     const newProduct = {
         name: product?.title ?? "",
         description: product?.description ?? "",
         id: product?.id,
         price: parseFloat(product?.price),
         currency: "USD",
-        image: product?.images[0],
+        image: product?.images[0] ?? "",
     }
     return (
         <Button onClick={() => {
