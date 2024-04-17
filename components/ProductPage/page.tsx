@@ -18,10 +18,11 @@ const ProductPage: React.FC<ProductPageProps> = ({ productId }) => {
                 <ProductCarousel product={productDetail[0]} setIndex={setIndex} selectedIdx={selectedIdx} />
                 <ProductPreview product={productDetail[0]} setIndex={setIndex} selectedIdx={selectedIdx} />
             </div>
-            <div className='mt-12 text-[1.5rem] md:text-[2rem] md:col-start-6'>
+            <div className='mt-12 text-[1.5rem] md:text-[2rem] md:col-start-5 self-start md:text-start'>
                 <p className='font-semibold'>{productDetail[0].title}</p>
-                <p className='text-[1.25rem]'>${productDetail[0].price}</p>
-                <AddToCartBtn />
+                <p className='text-[1.5rem]'>${productDetail[0].price}</p>
+                <p className='font-extralight my-4 text-[1rem]'>{productDetail[0].description}</p>
+                <AddToCartBtn product={productDetail[0]}/>
             </div>
         </div >
     )

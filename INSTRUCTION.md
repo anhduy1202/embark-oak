@@ -27,3 +27,11 @@ II. Product Page (/product/[id])
     1. ProductPage/pages
     2. <ProductCarousel>
     3. Work on <ProductPreview> using blur based on selectedIndex, need new <div onclick> to wrap the ui component
+
+III. Shopping Cart
+    1. npm install --save use-shopping-cart
+    2. npx shadcn-ui@latest add sheet
+    3. ShoppingCart/CardProviders
+    4. ShoppingCart/Cart/CartModal.tsx
+    5. Button/AddToCartBtn.tsx
+    6. CartModal, add CartDetail

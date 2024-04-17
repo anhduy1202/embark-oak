@@ -10,6 +10,7 @@ export interface productType {
     title: string,
     price: string,
     quantity: number,
+    description?: string,
     images?: string[] | any, 
     categories: string[]
 }
