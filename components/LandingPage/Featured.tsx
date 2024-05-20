@@ -19,7 +19,7 @@ const Featured = () => {
         <section className='flex flex-col items-center mt-12 font-Outfit'>
             <p className='text-[1.5rem] md:text-[3rem] font-normal'>Featured</p>
             <div className="">
-                <FeaturedList featList={featuredList} />
+                <ProductList products={featuredList} />
             </div>
             <Link href={'/featured'} className='my-16 font-light text-[1.5rem]'>
                 Shop more
@@ -30,16 +30,16 @@ const Featured = () => {
 
 export default Featured
 
-interface FeaturedListProps {
-    featList: productType[]
+interface ProductListProps {
+    products: productType[]
 }
 
-const FeaturedList: React.FC<FeaturedListProps> = ({ featList }) => {
+export const ProductList: React.FC<ProductListProps> = ({ products }) => {
     // the data should be fetched from CMS
     return (
         <>
             <div className="product-carousel">
-                {featList.map((product: productType) => {
+                {products.map((product: productType) => {
                     return (
                         <ProductCard product={product} />
                     )
@@ -47,7 +47,7 @@ const FeaturedList: React.FC<FeaturedListProps> = ({ featList }) => {
             </div>
             <Carousel className="md:hidden mt-6 max-w-[16rem]">
                 <CarouselContent>
-                    {Array.from(featList).map((product: productType, index) => (
+                    {Array.from(products).map((product: productType, index) => (
                         <CarouselItem key={product.id}>
                             <div className="p-1">
                                 <Card>
@@ -56,8 +56,8 @@ const FeaturedList: React.FC<FeaturedListProps> = ({ featList }) => {
                                             <img src={product.src} alt={product.title} className='w-full relative rounded-xl' />
                                             <p className='mt-6 font-medium text-[1.25rem] md:text-[1.75rem]'>{product.title}</p>
                                             <p className='text-[1.25rem]'>${product.price}</p>
-                                            <AddToCartBtn product={product} />
                                         </Link>
+                                            <AddToCartBtn product={product} />
                                     </CardContent>
 
                                 </Card>

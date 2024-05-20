@@ -35,3 +35,8 @@ III. Shopping Cart
     4. ShoppingCart/Cart/CartModal.tsx
     5. Button/AddToCartBtn.tsx
     6. CartModal, add CartDetail
+
+IV. mens-clothing
+    1. categorypage/menclothingpage
+    2. categorypage/womenclothingpage
+    3. categorypage/featuredpage
