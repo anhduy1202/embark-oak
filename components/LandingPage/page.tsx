@@ -10,7 +10,7 @@ const LandingPage: React.FC = () => {
             <Hero />
             <Featured />
             <Categories />
-            <BlogFeatured/>
+            {/* <BlogFeatured/> */}
         </section >
     )
 }

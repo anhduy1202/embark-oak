@@ -19,11 +19,11 @@ const NavBar = () => {
             title: 'Featured',
             url: '/featured'
         },
-        {
-            id: 'link4',
-            title: 'Blogs',
-            url: '/blogs'
-        }
+        // {
+        //     id: 'link4',
+        //     title: 'Blogs',
+        //     url: '/blogs'
+        // }
     ]
     return (
         <>

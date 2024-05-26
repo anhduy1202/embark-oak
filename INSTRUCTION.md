@@ -11,6 +11,9 @@
 4. Install React Icons
 ```npm install react-icons --save```
 
+5. Install OneEntry CMS SDK
+```npm install oneentry```
+
 I. Landing Page:
     5. Landing Page, Menu (desktop + mobile)
     5.1 Mobile Menu (npx shadcn-ui@latest add separator)
@@ -28,7 +31,11 @@ II. Product Page (/product/[id])
     2. <ProductCarousel>
     3. Work on <ProductPreview> using blur based on selectedIndex, need new <div onclick> to wrap the ui component
 
-III. Shopping Cart
+III. OneEntry SDK
+    1. Init, action.ts/defineOneEntry('https://embarkoak.oneentry.cloud', {token: process.env.ONEENTRY_TOKEN, langCode:'en'})
+    2. getPageData()
+
+IV. Shopping Cart
     1. npm install --save use-shopping-cart
     2. npx shadcn-ui@latest add sheet
     3. ShoppingCart/CardProviders
