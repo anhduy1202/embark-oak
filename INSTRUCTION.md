@@ -38,6 +38,9 @@ III. OneEntry SDK
     4. Attributes: mainTitle, mainImage, categoriestitle, categoriesimage, categorieslink in action.ts
         > CategoriesBannerDataType extends LabelCardType in interface.ts
         > fetch in app/page.tsx 
+    5. Products: Create Shop > For Catalog pages, add attributes for products (images,title,description,price,quantity,categories), create product in Catalogs
+    6. actions.ts > getFeaturedProducts, update Featured, CustomCard
+    7. update app/product/[id], update action.ts/getProductByIDm, add helper function to parse
 
 IV. Shopping Cart
     1. npm install --save use-shopping-cart

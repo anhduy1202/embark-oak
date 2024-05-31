@@ -8,21 +8,21 @@ import AddToCartBtn from '../Button/AddToCartBtn';
 
 interface ProductPageProps {
     productId: string
+    product: productType
 }
-const ProductPage: React.FC<ProductPageProps> = ({ productId }) => {
-    const productDetail: productType[] = Products.filter((product) => product.id == productId);
+const ProductPage: React.FC<ProductPageProps> = ({ productId, product }) => {
     const [selectedIdx, setIndex] = useState(0)
     return (
         <div className="mt-12 grid md:grid-cols-6 grid-col-1 text-center items-center">
             <div className="md:col-start-2 md:col-span-3 flex flex-col items-center">
-                <ProductCarousel product={productDetail[0]} setIndex={setIndex} selectedIdx={selectedIdx} />
-                <ProductPreview product={productDetail[0]} setIndex={setIndex} selectedIdx={selectedIdx} />
+                <ProductCarousel product={product} setIndex={setIndex} selectedIdx={selectedIdx} />
+                <ProductPreview product={product} setIndex={setIndex} selectedIdx={selectedIdx} />
             </div>
             <div className='mt-12 text-[1.5rem] md:text-[2rem] md:col-start-5 self-start md:text-start'>
-                <p className='font-semibold'>{productDetail[0].title}</p>
-                <p className='text-[1.5rem]'>${productDetail[0].price}</p>
-                <p className='font-extralight my-4 text-[1rem]'>{productDetail[0].description}</p>
-                <AddToCartBtn product={productDetail[0]}/>
+                <p className='font-semibold'>{product.title}</p>
+                <p className='text-[1.5rem]'>${product.price}</p>
+                <p className='font-extralight my-4 text-[1rem]'>{product.description}</p>
+                <AddToCartBtn product={product} />
             </div>
         </div >
     )
