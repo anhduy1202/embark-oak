@@ -1,31 +1,16 @@
 import React from 'react'
 import { LabelCard } from '../CustomCard/CustomCard'
-import { LabelCardType } from '@/lib/interface'
+import { CategoriesBannerDataType, LabelCardType } from '@/lib/interface'
 
-const Categories = () => {
-    const categories: LabelCardType[] = [
-        {
-            id: 'cat1',
-            title: 'MAN',
-            imgSrc: '/category-men.png',
-            url: '/mens-clothing'
-        },
-        {
-            id: 'cat2',
-            title: 'WOMAN',
-            imgSrc: '/category-women.png',
-            url: '/womens-clothing'
-        },
-        {
-            id: 'cat3',
-            title: 'FEATURED',
-            imgSrc: '/category-feat.png',
-            url: '/featured'
-        },
-    ]
+interface CategoriesProps {
+    categoriesData: CategoriesBannerDataType[]
+}
+
+const Categories:React.FC<CategoriesProps> = ({categoriesData}) => {
+    // fetch from CMS
     return (
         <section className='flex justify-center flex-col md:flex-row gap-4 items-center mt-6'>
-            {categories.map((category) => {
+            {categoriesData.map((category: any) => {
                 return (
                     <LabelCard customText="text-[2rem]" category={category} btnLabel='View Details' custom='' />
                 )

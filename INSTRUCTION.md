@@ -33,7 +33,11 @@ II. Product Page (/product/[id])
 
 III. OneEntry SDK
     1. Init, action.ts/defineOneEntry('https://embarkoak.oneentry.cloud', {token: process.env.ONEENTRY_TOKEN, langCode:'en'})
-    2. getPageData()
+    2. Create Pages > Home, add `getPageData()`
+    3. Add AttributeSet for banner in Settings > Attributes
+    4. Attributes: mainTitle, mainImage, categoriestitle, categoriesimage, categorieslink in action.ts
+        > CategoriesBannerDataType extends LabelCardType in interface.ts
+        > fetch in app/page.tsx 
 
 IV. Shopping Cart
     1. npm install --save use-shopping-cart

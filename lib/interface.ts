@@ -21,3 +21,14 @@ export interface LabelCardType {
     imgSrc: string,
     url: string
 }
+
+export interface BannerDataType{ 
+    title: string
+    image: string
+}
+
+export interface CategoriesBannerDataType extends LabelCardType { 
+    titles?: string[]
+    images?: string[]
+    links?: string[]
+}
