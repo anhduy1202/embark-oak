@@ -74,7 +74,6 @@ export async function getProductsByCategory (category:string) {
         }
       ]
     const value = await Products.getProducts(body,'en_US') 
-    console.log(value)
     const products = parseProductObject(value)
     return products
 }
