@@ -1,5 +1,6 @@
 'use client'
 import { getProductbyID } from '@/app/action'
+import Loading from '@/components/Button/Loading'
 import ProductPage from '@/components/ProductPage/page'
 import { productType } from '@/lib/interface'
 import React, { useEffect, useState } from 'react'
@@ -18,9 +19,13 @@ const page = ({ params }: { params: { id: string } }) => {
     }, [params.id])
     return (
         <>
-            {!loading && product && (
-                <ProductPage product={product} productId={params.id} />
-            )}
+            {loading && !product ? <Loading />
+                : (
+                    <ProductPage product={product} productId={params.id} />
+                )
+            }
+
+
         </>
     )
 }

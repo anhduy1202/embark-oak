@@ -55,18 +55,26 @@ const parseProductObject = (value: any) => {
     })) 
     return products
 }
-export async function getFeaturedProducts () {
-    const userQuery: IProductsQuery = {
-        offset: 0,
-        limit: 6,
-        statusMarker: null,
-        conditionValue: "featured",
-        conditionMarker: "in",
-        attributeMarker: "categories",
-        sortOrder: 'DESC',
-        sortKey: 'id'
-    }
-    const value = await Products.getProducts('en_US', userQuery)
+export async function getProductsByCategory (category:string) {
+    // const userQuery: IProductsQuery = {
+    //     offset: 0,
+    //     limit: 6,
+    //     statusMarker: null,
+    //     conditionValue: category,
+    //     conditionMarker: "in",
+    //     attributeMarker: "categories",
+    //     sortOrder: 'DESC',
+    //     sortKey: 'id'
+    // }
+    const body = [
+        {
+          "attributeMarker": "categories",
+          "conditionMarker": "in",
+          "conditionValue": category,
+        }
+      ]
+    const value = await Products.getProducts(body,'en_US') 
+    console.log(value)
     const products = parseProductObject(value)
     return products
 }

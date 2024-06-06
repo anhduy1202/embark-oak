@@ -5,15 +5,15 @@ import Categories from './Categories';
 import BlogFeatured from './BlogFeatured';
 import { BannerDataType, CategoriesBannerDataType, productType } from '@/lib/interface';
 
-interface LandingPageProps { 
+interface LandingPageProps {
     bannerData: BannerDataType
     categoriesData: CategoriesBannerDataType[]
     featuredProducts: productType[]
 }
-const LandingPage: React.FC<LandingPageProps> = ({bannerData, categoriesData, featuredProducts}) => {
+const LandingPage: React.FC<LandingPageProps> = ({ bannerData, categoriesData, featuredProducts }) => {
     return (
         <section className='flex flex-col w-full'>
-            <Hero bannerData={bannerData}/>
+            <Hero bannerData={bannerData} />
             <Featured featuredProducts={featuredProducts} />
             <Categories categoriesData={categoriesData} />
             {/* <BlogFeatured/> */}

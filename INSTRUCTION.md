@@ -24,7 +24,7 @@ I. Landing Page:
     11. Modify carousel.tsx to reduce previous, CarouselNext, Prev left/right
     12. Categories.tsx
     13. Refactor to CustomCard
-    14. Blogs.tsx, add custom to LabelCard like customImage, customText,...
+    <!-- 14. Blogs.tsx, add custom to LabelCard like customImage, customText,... -->
 
 II. Product Page (/product/[id])
     1. ProductPage/pages
