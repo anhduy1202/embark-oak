@@ -56,26 +56,10 @@ const parseProductObject = (value: any) => {
     return products
 }
 export async function getProductsByCategory (category:string) {
-    // const userQuery: IProductsQuery = {
-    //     offset: 0,
-    //     limit: 6,
-    //     statusMarker: null,
-    //     conditionValue: category,
-    //     conditionMarker: "in",
-    //     attributeMarker: "categories",
-    //     sortOrder: 'DESC',
-    //     sortKey: 'id'
-    // }
-    const body = [
-        {
-          "attributeMarker": "categories",
-          "conditionMarker": "in",
-          "conditionValue": category,
-        }
-      ]
-    const value = await Products.getProducts(body,'en_US') 
-    const products = parseProductObject(value)
-    return products
+    const value = await Products.getProductsByPageUrl(category)    
+    console.log(value) 
+    // const products = parseProductObject(value)
+    return []
 }
 
 export async function getProductbyID (id: number) {
