@@ -20,6 +20,7 @@ I. Landing Page:
     6. Shopping Cart component
     7. Hero Component, add button (npx shadcn-ui@latest add button)
     8. products.json
+    9. Custom Hook: hooks/useFetchData
     10. Featured Component, AddToCartBtn, carousel for mobile responsive (.product-carousel in global.css, npx shadcn-ui@latest add carousel card)
     11. Modify carousel.tsx to reduce previous, CarouselNext, Prev left/right
     12. Categories.tsx

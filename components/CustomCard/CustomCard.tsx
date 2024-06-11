@@ -16,8 +16,8 @@ export const ProductCard: React.FC<ProductProps> = ({ product, custom }) => {
                 <img src={product?.src} alt={product?.title} className='w-48 h-[320px] md:h-[480px] object-contain md:w-full relative rounded-xl' />
                 <p className='mt-6 font-medium text-[1.25rem] md:text-[1.75rem]'>{product?.title}</p>
                 <p className='text-[1.25rem]'>${product?.price}</p>
-                <AddToCartBtn product={product}/>
             </Link>
+            <AddToCartBtn product={product} />
         </div>
     )
 }

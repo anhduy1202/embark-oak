@@ -1,22 +1,11 @@
 'use client'
 import WomenClothingPage from '@/components/CategoryPage/WomenClothingPage'
-import { productType } from '@/lib/interface'
-import React, { useEffect, useState } from 'react'
-import { getProductsByCategory } from '../action'
+import React from 'react'
 import Loading from '@/components/Button/Loading'
+import useFetchData from '../hooks/useFetchData'
 
 const WomensClothingPage = () => {
-    const [womenProducts, setProducts] = useState<productType[]>([])
-    const [isLoading, setLoading] = useState(true)
-    useEffect(() => {
-        const getProducts = async () => {
-            setLoading(true)
-            const products = await getProductsByCategory("woman")
-            setProducts(products)
-            setLoading(false)
-        }
-        getProducts()
-    }, [])
+    const { banner, categories, isLoading, products: womenProducts } = useFetchData({ url: "womens-clothing", categoryUrl: "womens-clothing", fetchBanner: true, fetchCategories: false })
     return (
         <>
             {isLoading ? (
