@@ -11,7 +11,7 @@ const MenClothing = () => {
             {isLoading ? (
                 <Loading />
             ) : (
-                <MenClothingPage products={menProducts} />
+                <MenClothingPage products={menProducts} banner={banner}/>
             )}
         </>
     )

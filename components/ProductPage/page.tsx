@@ -21,7 +21,8 @@ const ProductPage: React.FC<ProductPageProps> = ({ productId, product }) => {
             <div className='mt-12 text-[1.5rem] md:text-[2rem] md:col-start-5 self-start md:text-start'>
                 <p className='font-semibold'>{product.title}</p>
                 <p className='text-[1.5rem]'>${product.price}</p>
-                <p className='font-extralight my-4 text-[1rem]'>{product.description}</p>
+                <p className='font-extralight my-4 text-[1.5rem]'>{product.description}</p>
+                <p className='text-[1.25rem]'>Quantity: {product.quantity}</p>
                 <AddToCartBtn product={product} />
             </div>
         </div >

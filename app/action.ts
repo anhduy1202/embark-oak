@@ -27,7 +27,7 @@ export async function getPageData(url: string) {
         title: value.attributeValues?.maintitle.value,
         image: value.attributeValues?.mainimage.value[0].downloadLink
     }
-    if (value.attributeValues?.categoriesTitle) {
+    if (value.attributeValues?.hasOwnProperty('categoriestitle') && value.attributeValues?.categoriestitle.value != '') {
         const categoriesData = {
             titles: value.attributeValues?.categoriestitle.value.split(","),
             images: value.attributeValues?.categoriesimage.value.map((item: any) => item.downloadLink),
@@ -79,14 +79,3 @@ export async function getProductbyID(id: number) {
     return products
 }
 
-
-export async function getProducts(userQuery = {}) {
-    const value = await Products.getProducts('en_US')
-    const products = parseProductObject(value)
-    return { products }
-}
-
-// export async function getAttributeSets(marker:string) {
-//     const value = await AttributesSets.getAttributesByMarker(marker, 'en_US')
-//     return value
-// }

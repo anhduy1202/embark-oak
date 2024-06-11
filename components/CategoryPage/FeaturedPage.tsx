@@ -1,15 +1,18 @@
-import { productType } from '@/lib/interface';
+import { BannerDataType, productType } from '@/lib/interface';
 import React from 'react'
-import Products from '@/lib/products.json';
 import { ProductList } from '../LandingPage/Featured';
+interface FeaturedClothingPageProps {
+    products: productType[]
+    banner: BannerDataType
+}
 
-const FeaturedPage = () => {
-    const featProductList: productType[] = Products.filter((product) => product.categories.includes("featured"));
+const FeaturedPage: React.FC<FeaturedClothingPageProps> = ({ products, banner }) => {
     return (
         <section className='flex flex-col items-center mt-12 font-Outfit'>
-            <p className='text-[1.5rem] md:text-[3rem] font-normal'>Featured</p>
+            <img src={banner.image} className='relative w-full h-[160px] md:h-[320px] object-cover' alt="Category banner" />
+            <p className='text-[3rem] md:text-[6rem] top-[20%] md:top-[30%] font-normal absolute text-white'>{banner.title}</p>
             <div className="">
-                <ProductList products={featProductList} />
+                <ProductList products={products} />
             </div>
         </section>
     )

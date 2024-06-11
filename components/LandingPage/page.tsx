@@ -2,7 +2,6 @@ import React from 'react'
 import Hero from './Hero';
 import Featured from './Featured';
 import Categories from './Categories';
-import BlogFeatured from './BlogFeatured';
 import { BannerDataType, CategoriesBannerDataType, productType } from '@/lib/interface';
 
 interface LandingPageProps {
