@@ -1,7 +1,9 @@
 import React from 'react'
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-
-const Filter = () => {
+interface FilterProps {
+    setFilter: React.Dispatch<React.SetStateAction<string>>
+}
+const Filter: React.FC<FilterProps> = ({ setFilter }) => {
     const filterOptions = [
         {
             id: 'r1',
@@ -26,7 +28,7 @@ const Filter = () => {
                 {filterOptions.map((option) => {
                     return (
                         <div key={option.id} className="flex items-center space-x-2">
-                            <RadioGroupItem value={option.value} id={option.id} />
+                            <RadioGroupItem onClick={()=>setFilter(option.value)} value={option.value} id={option.id} />
                             <p>{option.title}</p>
                         </div>
                     )
