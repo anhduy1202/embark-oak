@@ -57,3 +57,11 @@ IV. Components/CategoryPage
 V. Filtering
     1. npx shadcn-ui@latest add radio-group
     2. Components/Filter/Filter.tsx
+
+VI. Checkout
+    1. checkout/page.tsx
+    2. components/CheckOutPage
+    3. Create Form in CMS
+    4. npx shadcn-ui@latest add input
+    5. actions/getFormbyMarker
+    6. actions/parseCartDetail

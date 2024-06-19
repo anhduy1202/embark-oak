@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { BsHandbag } from "react-icons/bs";
 import { Button } from "@/components/ui/button"
 import {
@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/sheet"
 import { useShoppingCart } from 'use-shopping-cart';
 import { Separator } from '../ui/separator';
+import Link from 'next/link';
 
 interface CartProps {
     size?: number
@@ -59,6 +60,9 @@ export const CartModal = () => {
                                     </>
                                 )
                             })}
+                            <Link href={"/checkout"}>
+                                <Button>Checkout</Button>
+                            </Link>
                         </>
                     )}
                 </div>

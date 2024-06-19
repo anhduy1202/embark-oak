@@ -32,3 +32,21 @@ export interface CategoriesBannerDataType extends LabelCardType {
     images?: string[]
     links?: string[]
 }
+
+export interface OrderDetailsType { 
+    name: string
+    address: string
+    email: string
+    phone: string
+    total?: number,
+    products?: any
+}
+
+export interface CartDetailsType {
+    id: string,
+    name: string,
+    description: string,
+    price: number,
+    quantity: number,
+    image: string
+}

@@ -1,12 +1,15 @@
 "use server";
 import { productType } from '@/lib/interface';
 import { defineOneEntry } from 'oneentry'
+import { IFormsEntity } from 'oneentry/dist/forms/formsInterfaces';
+import { IFormData, IFormsPost } from 'oneentry/dist/formsData/formsDataInterfaces';
 import { IProductsEntity, IProductsQuery } from 'oneentry/dist/products/productsInterfaces';
 const {
     Admins,
     AttributesSets,
     Blocks,
     Forms,
+    Orders,
     FormData,
     FileUploading,
     GeneralTypes,
@@ -17,7 +20,8 @@ const {
     ProductStatuses,
     System,
     Templates,
-    TemplatePreviews
+    TemplatePreviews,
+    Payments
 } = defineOneEntry('https://embarkoak.oneentry.cloud', { token: process.env.ONEENTRY_TOKEN, langCode: 'en' })
 
 export async function getPageData(url: string) {
@@ -79,3 +83,75 @@ export async function getProductbyID(id: number) {
     return products
 }
 
+export const parseCartDetail = (cartDetails: any) => {
+    console.log(cartDetails)
+    let result = Object.keys(cartDetails).map(key => {
+        let item = cartDetails[key];
+        return {
+            id: item.id,
+            name: item.name,
+            description: item.description,
+            price: item.price,
+            quantity: item.quantity,
+            image: item.image
+        };
+    });
+    console.log(result)
+    let total = result.reduce((acc, item) => {
+        return acc + (item.price * item.quantity);
+    }, 0);
+    return { result, total }
+}
+
+const parseFormDetails = (form: IFormsEntity) => {
+    const formFields = form.attributes.map((att) => att.localizeInfos.title)
+    return formFields.slice(0, -3) //not include products and total
+}
+export async function getFormbyMarker(marker: string) {
+    const value = await Forms.getFormByMarker(marker, 'en_US')
+    const formFields = parseFormDetails(value)
+    return formFields
+}
+
+export async function postFormData(data: any) {
+    const body = {
+        "formIdentifier": "order",
+        "paymentAccountIdentifier": "payment-test",
+        "formData": [
+            {
+                "marker": "name",
+                "value": "Alex",
+                "type": "string"
+            },
+            {
+                "marker": "email",
+                "value": "+19999999999",
+                "type": "string"
+            },
+            {
+                "marker": "address",
+                "value": "example@oneentry.cloud",
+                "type": "string"
+            },
+            {
+                "marker": "total",
+                "value": "900",
+                "type": "float"
+            },
+            {
+                "marker": "product",
+                "value": "test",
+                "type": "string"
+            }
+        ],
+        "products": [
+            {
+                "productId": 19,
+                "quantity": 1,
+            }
+        ]
+    }
+
+    const value = await Orders.createOrder('myorder', body, 'en_US')
+    console.log(value)
+}
