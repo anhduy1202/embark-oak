@@ -1,8 +1,11 @@
+'use client'
 import React, { useState } from 'react'
 import { Input } from '../ui/input';
 import { CartDetailsType } from '@/lib/interface';
 import { Button } from '../ui/button';
 import { postFormData } from '@/app/action';
+import { useRouter } from 'next/navigation';
+import Loading from '../Button/Loading';
 
 interface FormProps {
   formFields: any[]
@@ -10,27 +13,31 @@ interface FormProps {
   total: number
 }
 const CheckOutPage: React.FC<FormProps> = ({ formFields, cartDetails, total }) => {
+  const [isLoading, setLoading] = useState(false)
   const [contactDetails, setContactDetails] = useState({
     Name: "",
     Address: "",
     Email: ""
   })
-  const submitOrder = async (e) => {
+  const router = useRouter()
+  const submitOrder = async (e: any) => {
+    setLoading(true)
     e.preventDefault()
-
     const data = {
       name: contactDetails.Name,
       address: contactDetails.Address,
-      email: contactDetails.Email
+      email: contactDetails.Email,
+      cart: cartDetails,
+      total: total
     }
-    const body = {
-      formIdentifier: 'order',
-      formData: {
-        marker: 'name',
-        value: 'test',
-      },
+    try {
+      postFormData(data)
+      router.push(`success?email=${data.email}`)
+      setLoading(false)
+    } catch (e) {
+      console.log(e)
+      setLoading(false)
     }
-    postFormData(body)
   }
   return (
     <section className='flex flex-col'>
@@ -64,7 +71,9 @@ const CheckOutPage: React.FC<FormProps> = ({ formFields, cartDetails, total }) =
           <p className='font-semibold'>Total:</p>
           <p className='font-bold'>${total}</p>
         </div>
-        <Button type='submit' className='text-[2rem] p-6 self-center'>Submit</Button>
+        {isLoading ? <Loading /> :
+          <Button type='submit' className='text-[2rem] p-6 self-center'>Submit</Button>
+        }
       </form>
     </section>
   )

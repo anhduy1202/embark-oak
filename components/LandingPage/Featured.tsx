@@ -41,7 +41,7 @@ export const ProductList: React.FC<ProductListProps> = ({ products }) => {
     // the data should be fetched from CMS
     return (
         <>
-            <div className="col-start-2 col-span-4 product-carousel">
+            <div className="md:col-start-2 md:col-span-4 product-carousel">
                 {products?.map((product: productType) => {
                     return (
                          <ProductCard product={product} />

@@ -65,3 +65,9 @@ VI. Checkout
     4. npx shadcn-ui@latest add input
     5. actions/getFormbyMarker
     6. actions/parseCartDetail
+
+    VI. Setup Nodemailer
+    1. npm i nodemailer @types/nodemailer
+    2. env for email, myaccount.google.com/apppasswords 
+    3. action/postFormData
+    4. app/success/page.tsx, useSearchParams()

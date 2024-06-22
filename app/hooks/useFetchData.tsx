@@ -17,10 +17,8 @@ const useFetchData = ({ url = "", categoryUrl = "", fetchBanner = false, fetchCa
                 const products = await getProductsByCategory(categoryUrl);
                 setProducts(products);
             }
-            console.log(products);
             if (fetchBanner) setBanner(data.bannerData);
             if (fetchCategories) setCategories(data.categoriesObject);
-            console.log(categories)
         } catch (error) {
             console.error('Error fetching data:', error);
         } finally {

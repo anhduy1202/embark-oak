@@ -17,7 +17,6 @@ const CheckoutPage = () => {
         try {
             const formFields = await getFormbyMarker("order")
             const { result, total } = await parseCartDetail(cartDetails)
-            console.log(total)
             setFormFields(formFields)
             setCartDetail(result)
             setTotal(total)

@@ -1,8 +1,6 @@
 "use server";
-import { productType } from '@/lib/interface';
 import { defineOneEntry } from 'oneentry'
 import { IFormsEntity } from 'oneentry/dist/forms/formsInterfaces';
-import { IFormData, IFormsPost } from 'oneentry/dist/formsData/formsDataInterfaces';
 import { IProductsEntity, IProductsQuery } from 'oneentry/dist/products/productsInterfaces';
 const {
     Admins,
@@ -23,9 +21,11 @@ const {
     TemplatePreviews,
     Payments
 } = defineOneEntry('https://embarkoak.oneentry.cloud', { token: process.env.ONEENTRY_TOKEN, langCode: 'en' })
+import nodemailer from 'nodemailer';
+import Mail from 'nodemailer/lib/mailer';
 
+// Get all data from a page
 export async function getPageData(url: string) {
-    // Get all data from a page
     const value = await Pages.getPageByUrl(url, 'en_US')
     const bannerData = {
         title: value.attributeValues?.maintitle.value,
@@ -64,6 +64,7 @@ const parseProductObject = (value: any) => {
     const uniqueProducts = Array.from(new Map(products.map((item: IProductsEntity) => [item.id, item])).values());
     return uniqueProducts
 }
+
 export async function getProductsByCategory(category: string) {
     const body = [
         {
@@ -84,7 +85,6 @@ export async function getProductbyID(id: number) {
 }
 
 export const parseCartDetail = (cartDetails: any) => {
-    console.log(cartDetails)
     let result = Object.keys(cartDetails).map(key => {
         let item = cartDetails[key];
         return {
@@ -96,7 +96,6 @@ export const parseCartDetail = (cartDetails: any) => {
             image: item.image
         };
     });
-    console.log(result)
     let total = result.reduce((acc, item) => {
         return acc + (item.price * item.quantity);
     }, 0);
@@ -105,8 +104,9 @@ export const parseCartDetail = (cartDetails: any) => {
 
 const parseFormDetails = (form: IFormsEntity) => {
     const formFields = form.attributes.map((att) => att.localizeInfos.title)
-    return formFields.slice(0, -3) //not include products and total
+    return formFields
 }
+
 export async function getFormbyMarker(marker: string) {
     const value = await Forms.getFormByMarker(marker, 'en_US')
     const formFields = parseFormDetails(value)
@@ -114,44 +114,78 @@ export async function getFormbyMarker(marker: string) {
 }
 
 export async function postFormData(data: any) {
-    const body = {
-        "formIdentifier": "order",
-        "paymentAccountIdentifier": "payment-test",
-        "formData": [
-            {
-                "marker": "name",
-                "value": "Alex",
-                "type": "string"
-            },
-            {
-                "marker": "email",
-                "value": "+19999999999",
-                "type": "string"
-            },
-            {
-                "marker": "address",
-                "value": "example@oneentry.cloud",
-                "type": "string"
-            },
-            {
-                "marker": "total",
-                "value": "900",
-                "type": "float"
-            },
-            {
-                "marker": "product",
-                "value": "test",
-                "type": "string"
-            }
-        ],
-        "products": [
-            {
-                "productId": 19,
-                "quantity": 1,
-            }
-        ]
-    }
+    const transport = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.MY_EMAIL,
+            pass: process.env.MY_PASSWORD,
+        },
+    })
+    const plainText = `
+Name: ${data.name}
+Address: ${data.address}
+Email: ${data.email}
+Cart Items:
+${data.cart.map((item: any) => `
+  - Item: ${item.name}
+    Description: ${item.description}
+    Price: $${item.price}
+    Quantity: ${item.quantity}
+    Image: ${item.image}
+`).join('')}
+Total: $${data.total}
+`;
 
-    const value = await Orders.createOrder('myorder', body, 'en_US')
-    console.log(value)
+    const htmlText = `
+<h2>Order Details</h2>
+<p><strong>Name:</strong> ${data.name}</p>
+<p><strong>Address:</strong> ${data.address}</p>
+<h3>Cart Items:</h3>
+<ul>
+  ${data.cart.map((item: any) => `
+    <li>
+      <p><strong>Item:</strong> ${item.name}</p>
+      <p><strong>Description:</strong> ${item.description}</p>
+      <p><strong>Price:</strong> $${item.price}</p>
+      <p><strong>Quantity:</strong> ${item.quantity}</p>
+      <p><img src="${item.image}" alt="${item.name}" width="100" /></p>
+    </li>
+  `).join('')}
+</ul>
+<p><strong>Total:</strong> $${data.total}</p>
+`;
+    // Order Email for shop admin
+    const orderEmailOptions: Mail.Options = {
+        from: process.env.MY_EMAIL,
+        to: process.env.MY_EMAIL,
+        subject: `Order from: ${data.name}, ${data.email}, ${data.address}`,
+        text: plainText,
+        html: htmlText
+    };
+    const confirmationEmailOptions: Mail.Options = {
+        from: process.env.MY_EMAIL,
+        to: data.email, //Send to customer email
+        subject: `Order confirmation for ${data.name}`,
+        text: plainText,
+        html: htmlText
+    };
+    const sendMailPromise = (emailOptions: any) =>
+        new Promise<string>((resolve, reject) => {
+            transport.sendMail(emailOptions, function (err) {
+                if (!err) {
+                    resolve('Email sent');
+                } else {
+                    reject(err.message);
+                }
+            });
+        });
+    try {
+        await Promise.all([
+            sendMailPromise(confirmationEmailOptions),
+            sendMailPromise(orderEmailOptions)
+        ]);
+        return { status: 200, message: "Email sent" }
+    } catch (err) {
+        return { status: 500, message: "Failed to send email" }
+    }
 }
