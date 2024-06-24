@@ -35,7 +35,7 @@ export const CartModal = () => {
                 <SheetHeader>
                     <SheetTitle>Shopping Cart</SheetTitle>
                     <SheetDescription>
-                        Make changes to your profile here. Click save when you're done.
+                        Current items in your cart will be displayed here, clickc Checkout to complete
                     </SheetDescription>
                 </SheetHeader>
                 <div className="mt-12">
@@ -61,7 +61,9 @@ export const CartModal = () => {
                                 )
                             })}
                             <Link href={"/checkout"}>
-                                <Button>Checkout</Button>
+                                <Button>
+                                    <SheetClose>Checkout</SheetClose>
+                                </Button>
                             </Link>
                         </>
                     )}
